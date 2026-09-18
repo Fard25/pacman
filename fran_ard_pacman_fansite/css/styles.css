@@ -1,0 +1,331 @@
+/* @font-face */
+@font-face {
+  font-family: 'PressStart';
+  src: url('prstartk.ttf') format('truetype');
+}
+
+/* Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: 'PressStart', monospace;
+  background-color: #000;
+  color: #fff;
+  scroll-behavior: smooth;
+  font-size: 18px;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* HEADER & NAV */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  background-color: #000;
+  text-align: center;
+  padding: 12px 0 8px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-family: 'PressStart', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  /* 0.5s transition to yellow on hover */
+  transition: color 0.5s ease;
+}
+
+nav ul li a:hover {
+  color: #FFD700;
+}
+
+.logo-wrap {
+  padding: 8px 0 12px;
+}
+
+.logo-wrap img {
+  width: min(450px, 85vw);
+}
+
+/* HOME SECTION */
+#home-section {
+  text-align: center;
+  padding: 70px 20px 80px;
+  overflow: hidden;
+}
+
+#high-scores {
+  background: #000;
+  padding: 70px 20px 80px;
+  text-align: center;
+}
+
+#home-section,
+#high-scores,
+#how-to-play,
+#players {
+  scroll-margin-top: 120px;
+}
+
+.chase-strip {
+  position: relative;
+  height: 120px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.character {
+  position: absolute;
+  top: 50%;
+  width: 50px;
+  left: 110vw;
+  height: 50px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+/* Ghosts chasing Pac-Man */
+.home-pacman  { animation: home-chase 5s linear infinite; animation-delay: 0s;   transform: translateY(-50%) scaleX(-1); }
+.home-ghost-1 { animation: home-chase 5s linear infinite; animation-delay: 0.5s; transform: translateY(-50%); }
+.home-ghost-2 { animation: home-chase 5s linear infinite; animation-delay: 0.9s; transform: translateY(-50%); }
+.home-ghost-3 { animation: home-chase 5s linear infinite; animation-delay: 1.3s; transform: translateY(-50%); }
+.home-ghost-4 { animation: home-chase 5s linear infinite; animation-delay: 1.7s; transform: translateY(-50%); }
+
+@keyframes home-chase {
+  0%   { left: 110vw; }
+  100% { left: -10vw; }
+}
+
+/* INSERT COINS: 1s visible, 1s invisible, loops */
+.insert-coins {
+  font-family: 'PressStart', monospace;
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  color: #fff;
+  animation: blink 2s step-start infinite;
+}
+
+@keyframes blink {
+  0%,  49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+/* SECTION DIVIDER */
+.section-divider {
+  border: none;
+  border-top: 2px solid #FFD300;
+}
+
+/* ALL SECTIONS */
+section {
+  background: #000;
+  padding: 120px 20px 120px;
+  text-align: center;
+}
+
+section h2 {
+  font-family: 'PressStart', monospace;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+/* HIGH SCORES */
+.ready-text {
+  font-family: 'PressStart', monospace;
+  font-size: 1.5rem;
+  color: #FFD700;
+  margin-bottom: 28px;
+  letter-spacing: 3px;
+}
+
+.scores-subtitle {
+  font-size: 0.6rem;
+  letter-spacing: 2px;
+  color: #fff;
+  margin-bottom: 22px;
+}
+
+.scores-table {
+  width: min(500px, 95vw);
+  margin: 28px auto 0;
+  border-collapse: collapse;
+  font-family: 'PressStart', monospace;
+  font-size: 0.6rem;
+  table-layout: fixed;
+}
+
+.scores-table thead th {
+  color: #fff;
+  letter-spacing: 2px;
+  padding-bottom: 14px;
+  font-weight: normal;
+  text-align: center;
+}
+
+.scores-table tbody tr td {
+  padding: 5px 12px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+/* nth-child() colour styling */
+.scores-table tbody tr:nth-child(1)  td { color: #FFA002; }
+.scores-table tbody tr:nth-child(2)  td { color: #FF0401; }
+.scores-table tbody tr:nth-child(3)  td { color: #01F8F8; }
+.scores-table tbody tr:nth-child(4)  td { color: #ff60b0; }
+.scores-table tbody tr:nth-child(5)  td { color: #FFA002; }
+.scores-table tbody tr:nth-child(6)  td { color: #FF0401; }
+.scores-table tbody tr:nth-child(7)  td { color: #01F8F8; }
+.scores-table tbody tr:nth-child(8)  td { color: #ff60b0; }
+.scores-table tbody tr:nth-child(9)  td { color: #FFA002; }
+.scores-table tbody tr:nth-child(10) td { color: #FF0401; }
+
+/* HOW TO PLAY */
+.how-strip {
+  position: relative;
+  height: 70px;
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+
+/* PAC-MAN CHASING GHOSTS: Left to Right Loop */
+.how-ghost-1 { animation: how-chase 5s linear infinite; animation-delay: 0s;   transform: translateY(-50%); }
+.how-ghost-2 { animation: how-chase 5s linear infinite; animation-delay: 0.4s; transform: translateY(-50%); }
+.how-ghost-3 { animation: how-chase 5s linear infinite; animation-delay: 0.8s; transform: translateY(-50%); }
+.how-ghost-4 { animation: how-chase 5s linear infinite; animation-delay: 1.2s; transform: translateY(-50%); }
+.how-pacman  { animation: how-chase 5s linear infinite; animation-delay: 1.6s; transform: translateY(-50%); }
+
+@keyframes how-chase {
+  0%   { left: -10vw; }
+  100% { left: 110vw; }
+}
+
+.how-description {
+  width: min(400px, 88vw);
+  margin: 0 auto;
+  font-size: 0.58rem;
+  line-height: 2.2;
+  letter-spacing: 1px;
+  text-align: center;
+  color: #fff;
+}
+
+/* First line: Uppercase + Yellow */
+.how-description .first-line {
+  text-transform: uppercase;
+  color: #FFD700;
+}
+
+/* PLAYERS */
+.players-subtitle {
+  font-size: 0.58rem;
+  letter-spacing: 2px;
+  margin-bottom: 22px;
+  color: #fff;
+  text-align: center;
+}
+
+.players-list {
+  list-style: none;
+  margin-bottom: 36px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.players-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.62rem;
+  letter-spacing: 1px;
+  margin-bottom: 14px;
+}
+
+.players-list li img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  flex-shrink: 0;
+  transform: scaleX(-1);
+}
+
+/* nth-of-type() colour styling */
+.players-list li:nth-of-type(1) { color: #FF0401; }
+.players-list li:nth-of-type(2) { color: #ff60b0; }
+.players-list li:nth-of-type(3) { color: #01F8F8; }
+.players-list li:nth-of-type(4) { color: #FFA002; }
+
+/* Points key */
+.points-key {
+  list-style: none;
+  width: min(320px, 90vw);
+  margin: 0 auto;
+}
+
+.points-key li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  font-size: 0.62rem;
+  letter-spacing: 1px;
+  margin-bottom: 35px;
+  color: #fff;
+}
+
+.pts-label {
+  min-width: 80px;
+  text-align: right;
+}
+
+.points-key li img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.square-big {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background: #FFD700;
+}
+
+.square-small {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: #FFD700;
+}
+
+/* FOOTER */
+footer {
+  background: #000;
+  text-align: center;
+  padding: 24px 20px;
+  font-size: 0.45rem;
+  color: #ffffff;
+  letter-spacing: 1px;
+}
